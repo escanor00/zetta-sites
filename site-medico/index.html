@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dra. Camila Mendes | Cardiologia & Medicina Preventiva</title>
+  <style>
+    :root {
+      --primary: #0891b2;
+      --primary-dark: #0e7490;
+      --primary-light: #ecfeff;
+      --secondary: #0f172a;
+      --accent: #22c55e;
+      --bg-body: #f8fafc;
+      --bg-card: #ffffff;
+      --text-main: #334155;
+      --text-muted: #64748b;
+      --text-white: #ffffff;
+      --border: #e2e8f0;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.04);
+      --shadow-lg: 0 10px 25px -5px rgba(8, 145, 178, 0.12), 0 8px 10px -6px rgba(0,0,0,0.04);
+      --radius: 12px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      box-shadow: var(--shadow-sm);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .logo-text h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--secondary);
+      line-height: 1.1;
+    }
+
+    .logo-text span {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--text-white);
+      box-shadow: 0 4px 12px rgba(8, 145, 178, 0.25);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(8, 145, 178, 0.35);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--primary-light);
+      transform: translateY(-2px);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 5rem 0 4rem;
+      background: linear-gradient(135deg, #ffffff 0%, var(--primary-light) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background-color: rgba(8, 145, 178, 0.1);
+      color: var(--primary-dark);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      line-height: 1.2;
+      color: var(--secondary);
+      font-weight: 800;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title span {
+      color: var(--primary);
+    }
+
+    .hero-description {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 540px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-image-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-image-card {
+      width: 100%;
+      max-width: 420px;
+      height: 480px;
+      background: #e2e8f0;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      border: 4px solid var(--bg-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, #cff4fc 0%, #0891b2 100%);
+    }
+
+    /* Doctor SVG Placeholder Illustration */
+    .doctor-avatar {
+      width: 85%;
+      height: 85%;
+      bottom: 0;
+      position: absolute;
+    }
+
+    .floating-card {
+      position: absolute;
+      background: var(--bg-card);
+      padding: 1rem 1.25rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 10;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .floating-card-1 {
+      top: 10%;
+      left: -20px;
+    }
+
+    .floating-card-2 {
+      bottom: 10%;
+      right: -20px;
+      animation-delay: 2s;
+    }
+
+    .fc-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+    }
+
+    .fc-text h4 {
+      font-size: 0.9rem;
+      color: var(--secondary);
+    }
+
+    .fc-text p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Metrics Strip */
+    .stats-strip {
+      background: var(--bg-card);
+      margin-top: -40px;
+      position: relative;
+      z-index: 20;
+      border-radius: 16px;
+      box-shadow: var(--shadow-lg);
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      border: 1px solid var(--border);
+    }
+
+    .stat-item {
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+
+    .stat-item:last-child {
+      border-right: none;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Section Styling */
+    section {
+      padding: 6rem 0;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .section-subtitle {
+      color: var(--primary);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      color: var(--secondary);
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .section-description {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    /* Curriculum / About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-text h3 {
+      font-size: 1.75rem;
+      color: var(--secondary);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .about-text p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .crm-badge {
+      display: inline-block;
+      background: var(--secondary);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      position: relative;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .timeline-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .timeline-content h4 {
+      font-size: 1.05rem;
+      color: var(--secondary);
+      font-weight: 600;
+    }
+
+    .timeline-content p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* Specialties */
+    .specialties {
+      background-color: #f1f5f9;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-light);
+    }
+
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.25rem;
+      color: var(--secondary);
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+
+    .service-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      flex-grow: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-link {
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+    }
+
+    .service-link:hover {
+      gap: 10px;
+    }
+
+    /* Differentials */
+    .differentials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .diff-card {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .diff-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 1.5rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 16px rgba(8, 145, 178, 0.2);
+    }
+
+    .diff-card h3 {
+      font-size: 1.2rem;
+      color: var(--secondary);
+      margin-bottom: 0.75rem;
+    }
+
+    .diff-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Scheduling / Appointment Section */
+    .booking-section {
+      background: linear-gradient(135deg, var(--secondary) 0%, #1e293b 100%);
+      color: white;
+      border-radius: 24px;
+      padding: 4rem 3rem;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .booking-text h2 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    .booking-text p {
+      color: #94a3b8;
+      margin-bottom: 2rem;
+      font-size: 1.05rem;
+    }
+
+    .booking-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .booking-features li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #cbd5e1;
+    }
+
+    .booking-features svg {
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .booking-form {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 16px;
+      color: var(--text-main);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .booking-form h3 {
+      font-size: 1.35rem;
+      color: var(--secondary);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      outline: none;
+      transition: var(--transition);
+      background-color: #f8fafc;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.15);
+      background-color: white;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 0.85rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Testimonials */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .testimonial-card {
+      background: var(--bg-card);
+      padding: 2rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .stars {
+      color: #f59e0b;
+      display: flex;
+      gap: 4px;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      color: var(--text-main);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .patient-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .patient-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    .patient-details h4 {
+      font-size: 0.95rem;
+      color: var(--secondary);
+      font-weight: 600;
+    }
+
+    .patient-details span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Location & Contact Section */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .contact-card {
+      background: var(--bg-card);
+      padding: 2.5rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .contact-card h3 {
+      font-size: 1.5rem;
+      color: var(--secondary);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-detail h4 {
+      font-size: 0.95rem;
+      color: var(--secondary);
+      font-weight: 600;
+    }
+
+    .contact-detail p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .map-mock {
+      background: #e2e8f0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      min-height: 350px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border: 1px solid var(--border);
+      background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+      background-size: 16px 16px;
+    }
+
+    .map-pin-box {
+      background: var(--bg-card);
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow-lg);
+      text-align: center;
+      z-index: 2;
+    }
+
+    .map-pin-box svg {
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    /* Modal Confirmation */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-box {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 20px;
+      max-width: 450px;
+      width: 90%;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+      transform: translateY(20px);
+      transition: var(--transition);
+    }
+
+    .modal-overlay.active .modal-box {
+      transform: translateY(0);
+    }
+
+    .modal-icon {
+      width: 64px;
+      height: 64px;
+      background: #dcfce7;
+      color: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+
+    .modal-box h3 {
+      font-size: 1.5rem;
+      color: var(--secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-box p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--secondary);
+      color: #94a3b8;
+      padding: 4rem 0 2rem;
+      border-top: 1px solid #1e293b;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-col h4 {
+      color: white;
+      font-size: 1.1rem;
+      margin-bottom: 1.25rem;
+      font-weight: 600;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .footer-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: var(--transition);
+      font-size: 0.9rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-light);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #1e293b;
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #1e293b;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .social-icon:hover {
+      background: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    /* Responsiveness */
+    @media (max-width: 992px) {
+      .hero-grid, .about-grid, .booking-grid, .info-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .stats-strip {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+      .stat-item:nth-child(2) {
+        border-right: none;
+      }
+      .differentials-grid, .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .hero-image-container {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 2rem;
+        box-shadow: var(--shadow-lg);
+        border-top: 1px solid var(--border);
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .hero-title {
+        font-size: 2.25rem;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">
+          <div class="logo-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+          </div>
+          <div class="logo-text">
+            <h1>Dra. Camila Mendes</h1>
+            <span>Cardiologia Preventiva</span>
+          </div>
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#curriculo">Currículo</a></li>
+          <li><a href="#especialidades">Especialidades</a></li>
+          <li><a href="#depoimentos">Depoimentos</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+
+        <a href="#agendamento" class="btn btn-primary" style="display: none; display: md-inline-flex;">Agendar Consulta</a>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir Menu">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Atendimento Humanizado & Especializado
+          </div>
+          <h2 class="hero-title">Cuidando do seu <span>coração</span> com ciência e empatia.</h2>
+          <p class="hero-description">
+            Especialista em prevenção cardiovascular, diagnóstico preciso e planos de tratamento individualizados para você viver com mais saúde e qualidade de vida.
+          </p>
+          <div class="hero-buttons">
+            <a href="#agendamento" class="btn btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Agendar Consulta
+            </a>
+            <a href="#especialidades" class="btn btn-outline">Ver Especialidades</a>
+          </div>
+        </div>
+
+        <div class="hero-image-container">
+          <!-- Floating elements -->
+          <div class="floating-card floating-card-1">
+            <div class="fc-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div class="fc-text">
+              <h4>CRM-SP 145.892</h4>
+              <p>RQE nº 89.201</p>
+            </div>
+          </div>
+
+          <div class="floating-card floating-card-2">
+            <div class="fc-icon" style="background: #dcfce7; color: var(--accent);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+            </div>
+            <div class="fc-text">
+              <h4>99.4%</h4>
+              <p>Satisfação dos Pacientes</p>
+            </div>
+          </div>
+
+          <!-- Doctor Illustration Vector -->
+          <div class="hero-image-card">
+            <svg class="doctor-avatar" viewBox="0 0 300 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M150 160C177.614 160 200 137.614 200 110C200 82.3858 177.614 60 150 60C122.386 60 100 82.3858 100 110C100 137.614 122.386 160 150 160Z" fill="#F8FAF C" fill-opacity="0.3"/>
+              <!-- Hair back -->
+              <path d="M90 120C85 70 120 40 150 40C180 40 215 70 210 120C210 140 200 170 200 170H100C100 170 90 140 90 120Z" fill="#334155"/>
+              <!-- Head -->
+              <path d="M115 100C115 80.67 130.67 65 150 65C169.33 65 185 80.67 185 100V125C185 144.33 169.33 160 150 160C130.67 160 115 144.33 115 125V100Z" fill="#FCE7F3"/>
+              <!-- Face details -->
+              <path d="M135 110C135 112 133.657 114 132 114C130.343 114 129 112 129 110C129 108 130.343 106 132 106C133.657 106 135 108 135 110Z" fill="#475569"/>
+              <path d="M171 110C171 112 169.657 114 168 114C166.343 114 165 112 165 110C165 108 166.343 106 168 106C169.657 106 171 108 171 110Z" fill="#475569"/>
+              <path d="M142 138C146 142 154 142 158 138" stroke="#E11D48" stroke-width="3" stroke-linecap="round"/>
+              <!-- Hair front -->
+              <path d="M115 90C120 70 145 65 150 78C155 65 180 70 185 90C185 90 175 75 150 82C125 75 115 90 115 90Z" fill="#1E293B"/>
+              <!-- Clothes / Lab Coat -->
+              <path d="M70 300C70 230 110 180 150 180C190 180 230 230 230 300V360H70V300Z" fill="#FFFFFF"/>
+              <path d="M120 180L150 240L180 180" fill="#0891B2"/>
+              <path d="M135 180L150 210L165 180" fill="#E0F2FE"/>
+              <!-- Stethoscope -->
+              <path d="M120 200C120 240 180 240 180 200" stroke="#64748B" stroke-width="6" stroke-linecap="round"/>
+              <path d="M150 235V260" stroke="#64748B" stroke-width="6"/>
+              <circle cx="150" cy="268" r="12" fill="#94A3B8" stroke="#64748B" stroke-width="4"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Strip -->
+      <div class="stats-strip">
+        <div class="stat-item">
+          <div class="stat-number">14+</div>
+          <div class="stat-label">Anos de Experiência</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">+8.500</div>
+          <div class="stat-label">Pacientes Atendidos</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Foco no Paciente</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">Doutorado</div>
+          <div class="stat-label">Pela USP</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About / Curriculum Section -->
+  <section id="sobre">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <span class="section-subtitle">Sobre a Médica</span>
+          <h3>Dra. Camila Mendes</h3>
+          <div class="crm-badge">CRM-SP 145.892 | RQE 89.201</div>
+          <p>
+            Com mais de uma década dedicada à medicina de excelência, minha missão é proporcionar uma abordagem preventiva e personalizada para a saúde do seu coração.
+          </p>
+          <p>
+            Acredito que o cuidado médico vai muito além de prescrições: envolve escuta ativa, acompanhamento contínuo e a compreensão integral da rotina e necessidades de cada paciente.
+          </p>
+          <a href="#agendamento" class="btn btn-primary" style="margin-top: 0.5rem;">Conhecer Minha Abordagem</a>
+        </div>
+
+        <div id="curriculo" class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <div class="timeline-content">
+              <h4>Doutorado em Cardiologia</h4>
+              <p>Faculdade de Medicina da Universidade de São Paulo (FMUSP)</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7h-3a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3M4 7h3a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4"/></svg>
+            </div>
+            <div class="timeline-content">
+              <h4>Residência Médica em Cardiologia</h4>
+              <p>Instituto do Coração (InCor - HCFMUSP)</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5l9-9l-9-9l2 5l-8 4l8 4z"/></svg>
+            </div>
+            <div class="timeline-content">
+              <h4>Membro Titular SBC</h4>
+              <p>Sociedade Brasileira de Cardiologia</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <div class="timeline-content">
+              <h4>Fellowship em Imagem Cardiovascular</h4>
+              <p>Harvard Medical School (Boston, EUA)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Specialties Section -->
+  <section id="especialidades" class="specialties">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Áreas de Atuação</span>
+        <h2 class="section-title">Especialidades e Serviços</h2>
+        <p class="section-description">Diagnósticos precisos e tratamentos avançados focados na sua saúde cardiovascular integrativa.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          </div>
+          <h3>Consulta Cardiológica</h3>
+          <p>Avaliação completa da saúde do coração, histórico de saúde, eletrocardiograma e orientação clínica individualizada.</p>
+          <a href="#agendamento" class="service-link">Agendar Consulta &rarr;</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3>Check-up Preventivo</h3>
+          <p>Bateria de exames e investigações direcionadas para identificar precocemente fatores de risco e prevenir doenças graves.</p>
+          <a href="#agendamento" class="service-link">Saber mais &rarr;</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <h3>Hipertensão e Colesterol</h3>
+          <p>Controle rigoroso da pressão arterial e perfil lipídico através de adequação alimentar e terapêutica moderna.</p>
+          <a href="#agendamento" class="service-link">Agendar Consulta &rarr;</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+          </div>
+          <h3>Avaliação Pré-Operatória</h3>
+          <p>Análise de risco cirúrgico minuciosa para garantir a máxima segurança em procedimentos médicos e cirúrgicos.</p>
+          <a href="#agendamento" class="service-link">Agendar Pré-op &rarr;</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h3>Cardiologia Esportiva</h3>
+          <p>Avaliação cardiovascular para atletas profissionais e amadores iniciarem ou intensificarem atividades físicas com segurança.</p>
+          <a href="#agendamento" class="service-link">Agendar Avaliação &rarr;</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>Telemedicina</h3>
+          <p>Atendimento online prático e seguro para consultas de retorno, segunda opinião médica e orientações de acompanhamento.</p>
+          <a href="#agendamento" class="service-link">Consulta Online &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Differentials -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Por que escolher</span>
+        <h2 class="section-title">Diferenciais do Atendimento</h2>
+      </div>
+
+      <div class="differentials-grid">
+        <div class="diff-card">
+          <div class="diff-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h3>Atendimento Sem Pressa</h3>
+          <p>Consultas com tempo estendido de 50 minutos para ouvir todas as suas dúvidas e compreender seu estilo de vida.</p>
+        </div>
+
+        <div class="diff-card">
+          <div class="diff-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3>Tecnologia de Ponta</h3>
+          <p>Equipamentos de diagnóstico moderno para exames precisos e laudos rápidos no próprio consultório.</p>
+        </div>
+
+        <div class="diff-card">
+          <div class="diff-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <h3>Canal Direto pós-consulta</h3>
+          <p>Suporte contínuo para dúvidas sobre medicações e sintomas através de canal de mensagem exclusivo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Appointment / Booking Section -->
+  <section id="agendamento">
+    <div class="container">
+      <div class="booking-section">
+        <div class="booking-grid">
+          <div class="booking-text">
+            <h2>Agende sua consulta com praticidade</h2>
+            <p>Preencha os dados ao lado para solicitar o agendamento da sua consulta presencial ou online. Nossa equipe retornará rapidamente para confirmar o horário.</p>
+
+            <ul class="booking-features">
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Atendimento Presencial e por Telemedicina</span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Aceitamos diversos convênios por reembolso</span>
+              </li>
+              <li>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Ambiente confortável e estacionamento no local</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="booking-form">
+            <h3>Solicitar Agendamento</h3>
+            <form id="appointmentForm">
+              <div class="form-group">
+                <label for="name">Nome Completo</label>
+                <input type="text" id="name" class="form-control" placeholder="Ex: Maria Silva" required>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="phone">Telefone / WhatsApp</label>
+                  <input type="tel" id="phone" class="form-control" placeholder="(11) 99999-9999" required>
+                </div>
+                <div class="form-group">
+                  <label for="type">Tipo de Consulta</label>
+                  <select id="type" class="form-control" required>
+                    <option value="presencial">Presencial</option>
+                    <option value="online">Telemedicina</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="date">Data Preferencial</label>
+                  <input type="date" id="date" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="period">Período</label>
+                  <select id="period" class="form-control" required>
+                    <option value="manhar">Manhã</option>
+                    <option value="tarde">Tarde</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="notes">Observações ou Motivo (Opcional)</label>
+                <textarea id="notes" class="form-control" rows="2" placeholder="Primeira consulta, exames de rotina..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-submit">Confirmar Solicitação</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="depoimentos">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Depoimentos</span>
+        <h2 class="section-title">O que dizem os pacientes</h2>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div>
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text">"A Dra. Camila é de uma atenção impressionante. Investigou detalhadamente minhas queixas que outros médicos ignoraram. O diagnóstico correto mudou completamente minha qualidade de vida."</p>
+          </div>
+          <div class="patient-info">
+            <div class="patient-avatar">RF</div>
+            <div class="patient-details">
+              <h4>Roberto Faria</h4>
+              <span>Paciente há 3 anos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div>
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text">"Excelente médica! Muito didática ao explicar os resultados dos exames. O consultório é extremamente acolhedor e a equipe muito pontual. Recomendo de olhos fechados."</p>
+          </div>
+          <div class="patient-info">
+            <div class="patient-avatar">AL</div>
+            <div class="patient-details">
+              <h4>Ana Lucia Rocha</h4>
+              <span>Check-up Preventivo</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div>
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text">"Fiz consulta por telemedicina e me surpreendi com o nível de cuidado. Recebi toda a receita e pedidos de exames digitalmente no mesmo dia. Profissional exemplar."</p>
+          </div>
+          <div class="patient-info">
+            <div class="patient-avatar">MS</div>
+            <div class="patient-details">
+              <h4>Marcos Santos</h4>
+              <span>Consulta Online</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location & Contact -->
+  <section id="contato" style="background-color: #f1f5f9;">
+    <div class="container">
+      <div class="info-grid">
+        <div class="contact-card">
+          <h3>Informações de Contato</h3>
+          <ul class="contact-list">
+            <li class="contact-item">
+              <div class="contact-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div class="contact-detail">
+                <h4>Endereço</h4>
+                <p>Av. Paulista, 1500 - Conj. 82<br>Bela Vista, São Paulo - SP</p>
+              </div>
+            </li>
+
+            <li class="contact-item">
+              <div class="contact-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div class="contact-detail">
+                <h4>Telefone & WhatsApp</h4>
+                <p>(11) 98765-4321 / (11) 3210-9876</p>
+              </div>
+            </li>
+
+            <li class="contact-item">
+              <div class="contact-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div class="contact-detail">
+                <h4>E-mail</h4>
+                <p>contato@dracamilamendes.com.br</p>
+              </div>
+            </li>
+
+            <li class="contact-item">
+              <div class="contact-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div class="contact-detail">
+                <h4>Horário de Atendimento</h4>
+                <p>Segunda a Sexta: 08:00 às 18:00<br>Sábado: 08:00 às 12:00</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="map-mock">
+          <div class="map-pin-box">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <h4 style="color: var(--secondary); font-size: 1rem;">Consultório Dra. Camila</h4>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">Av. Paulista, 1500 - SP</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal Component -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal-box">
+      <div class="modal-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3>Solicitação Enviada!</h3>
+      <p>Obrigado! Recebemos sua solicitação. Nossa equipe entrará em contato via WhatsApp em breve para confirmar seu horário.</p>
+      <button class="btn btn-primary" style="width: 100%;" id="modalClose">Entendido</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo" style="margin-bottom: 1rem;">
+            <div class="logo-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+            </div>
+            <div class="logo-text">
+              <h1 style="color: white;">Dra. Camila Mendes</h1>
+              <span>Cardiologia</span>
+            </div>
+          </div>
+          <p style="font-size: 0.9rem; margin-bottom: 1.5rem;">
+            Medicina preventiva e cardiologia especializada voltada para o seu bem-estar e longevidade com qualidade.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <ul class="footer-links">
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#curriculo">Currículo</a></li>
+            <li><a href="#especialidades">Especialidades</a></li>
+            <li><a href="#agendamento">Agendamento</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="#">Termos de Uso</a></li>
+            <li><a href="#">Política de Privacidade</a></li>
+            <li><a href="#">Ética Médica CFM</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Redes Sociais</h4>
+          <div class="social-links">
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Dra. Camila Mendes - Todos os direitos reservados. CRM-SP 145.892 | RQE 89.201</p>
+        <p>Design Profissional para Saúde</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking links
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Form submission handling
+    const appointmentForm = document.getElementById('appointmentForm');
+    const successModal = document.getElementById('successModal');
+    const modalClose = document.getElementById('modalClose');
+
+    appointmentForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      successModal.classList.add('active');
+      appointmentForm.reset();
+    });
+
+    modalClose.addEventListener('click', () => {
+      successModal.classList.remove('active');
+    });
+
+    // Close modal on background click
+    successModal.addEventListener('click', (e) => {
+      if (e.target === successModal) {
+        successModal.classList.remove('active');
+      }
+    });
+
+    // Min date setting for date input (today)
+    const dateInput = document.getElementById('date');
+    if (dateInput) {
+      const today = new Date().toISOString().split('T')[0];
+      dateInput.setAttribute('min', today);
+    }
+  </script>
+</body>
+</html>
+<!-- zetta:639292423263330700 -->

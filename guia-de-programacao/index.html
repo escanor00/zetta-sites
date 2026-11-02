@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Programação | Seu Portal de Entrada na Tecnologia</title>
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --bg-card-hover: #334155;
+            --primary: #06b6d4;
+            --primary-hover: #0891b2;
+            --secondary: #8b5cf6;
+            --accent: #10b981;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --code-bg: #020617;
+            --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            --font-mono: 'Fira Code', 'Courier New', Courier, monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Container Limitador */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Navegação */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 0 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .hero-title .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+            color: #000;
+            font-weight: 700;
+            padding: 0.85rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 14px rgba(6, 182, 212, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(6, 182, 212, 0.5);
+        }
+
+        /* Terminal Mockup */
+        .terminal {
+            background-color: var(--code-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .terminal-header {
+            background-color: var(--bg-card);
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background-color: #ef4444; }
+        .dot-yellow { background-color: #f59e0b; }
+        .dot-green { background-color: #10b981; }
+
+        .terminal-title {
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+        }
+
+        .terminal-body {
+            padding: 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+        }
+
+        .code-line {
+            margin-bottom: 0.5rem;
+        }
+
+        .code-keyword { color: var(--secondary); }
+        .code-var { color: var(--primary); }
+        .code-string { color: var(--accent); }
+        .code-comment { color: #64748b; font-style: italic; }
+
+        /* Seções Gerais */
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* O que é Programação? */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Linguagens Populares */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--bg-card);
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1.25rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary);
+            color: #000;
+            border-color: var(--primary);
+            font-weight: 600;
+        }
+
+        .lang-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .lang-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .lang-badge {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 12px;
+            background-color: rgba(6, 182, 212, 0.1);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            font-weight: 600;
+        }
+
+        .lang-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .lang-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .lang-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            background-color: var(--code-bg);
+            color: var(--text-muted);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        /* Quiz Interativo */
+        .quiz-container {
+            background: linear-gradient(180deg, var(--bg-card) 0%, var(--code-bg) 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .quiz-opt {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--text-light);
+        }
+
+        .quiz-opt:hover {
+            border-color: var(--secondary);
+            background: var(--bg-card-hover);
+        }
+
+        .quiz-result {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background-color: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            display: none;
+        }
+
+        .quiz-result.active {
+            display: block;
+        }
+
+        /* Dicas para Iniciantes (Timeline/Steps) */
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 1.5rem;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 12px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding-top: 100px;
+            }
+
+            .hero-title {
+                font-size: 2.25rem;
+            }
+
+            .nav-links {
+                display: none; /* Simplificado para brevidade mobile */
+            }
+
+            .step-item {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegação -->
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                &lt;/&gt; Guia<span>Dev</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#conceitos">O que é?</a></li>
+                <li><a href="#linguagens">Linguagens</a></li>
+                <li><a href="#quiz">Recomendador</a></li>
+                <li><a href="#dicas">Dicas</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="container hero">
+        <div>
+            <h1 class="hero-title">Desperte o criador por trás da <span class="gradient-text">tecnologia</span>.</h1>
+            <p class="hero-subtitle">Aprenda os fundamentos da programação, explore as linguagens mais demandadas do mercado e comece sua jornada técnica com o pé direito.</p>
+            <a href="#linguagens" class="cta-button">Explorar Linguagens</a>
+        </div>
+        <div class="terminal">
+            <div class="terminal-header">
+                <div class="dot dot-red"></div>
+                <div class="dot dot-yellow"></div>
+                <div class="dot dot-green"></div>
+                <div class="terminal-title">hello_world.js</div>
+            </div>
+            <div class="terminal-body">
+                <div class="code-line"><span class="code-keyword">const</span> <span class="code-var">dev</span> = {</div>
+                <div class="code-line">&nbsp;&nbsp;nome: <span class="code-string">'Você'</span>,</div>
+                <div class="code-line">&nbsp;&nbsp;status: <span class="code-string">'Pronto para aprender'</span>,</div>
+                <div class="code-line">&nbsp;&nbsp;habilidades: [<span class="code-string">'Lógica'</span>, <span class="code-string">'Criatividade'</span>]</div>
+                <div class="code-line">};</div>
+                <div class="code-line"></div>
+                <div class="code-line"><span class="code-keyword">function</span> <span class="code-var">iniciarJornada</span>() {</div>
+                <div class="code-line">&nbsp;&nbsp;<span class="code-keyword">console</span>.log(<span class="code-string">`Bem-vindo, ${dev.nome}!`</span>);</div>
+                <div class="code-line">}</div>
+                <div class="code-line"></div>
+                <div class="code-line"><span class="code-comment">// Clique abaixo para rodar o código</span></div>
+                <div class="code-line"><span class="code-var">iniciarJornada</span>();</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- O que é Programação? -->
+    <section id="conceitos">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">O que é Programação?</h2>
+                <p class="section-desc">Programar é a arte de dar instruções precisas a um computador para resolver problemas ou criar soluções automatizadas.</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">🧠</div>
+                    <h3>Lógica de Programação</h3>
+                    <p>É a forma de pensar estruturada. Antes de escrever código, você aprende a quebrar problemas complexos em pequenas etapas executáveis.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3>Algoritmos</h3>
+                    <p>Sequências finitas de passos para realizar uma tarefa específica. Uma receita de bolo ou um passo a passo do GPS são algoritmos do dia a dia.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌐</div>
+                    <h3>Sintaxe e Linguagem</h3>
+                    <p>Cada linguagem de programação possui suas próprias regras gramaticais (sintaxe) para traduzir ideias em comandos compreensíveis para a máquina.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Linguagens Populares -->
+    <section id="linguagens">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Linguagens Populares</h2>
+                <p class="section-desc">Conheça as principais ferramentas usadas pelos desenvolvedores em todo o mundo.</p>
+            </div>
+
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterLangs('todas')">Todas</button>
+                <button class="filter-btn" onclick="filterLangs('web')">Web</button>
+                <button class="filter-btn" onclick="filterLangs('dados')">Dados & IA</button>
+                <button class="filter-btn" onclick="filterLangs('mobile')">Mobile</button>
+            </div>
+
+            <div class="cards-grid" id="lang-grid">
+                <!-- JavaScript -->
+                <div class="lang-card" data-category="web">
+                    <div>
+                        <div class="lang-header">
+                            <h3>JavaScript</h3>
+                            <span class="lang-badge">Iniciante / Intermediário</span>
+                        </div>
+                        <p>A linguagem essencial da Web. Permite criar páginas interativas, aplicativos web completos (Node.js) e até apps mobile.</p>
+                    </div>
+                    <div class="lang-tags">
+                        <span class="tag">Web Front-end</span>
+                        <span class="tag">Back-end</span>
+                        <span class="tag">Interativo</span>
+                    </div>
+                </div>
+
+                <!-- Python -->
+                <div class="lang-card" data-category="dados">
+                    <div>
+                        <div class="lang-header">
+                            <h3>Python</h3>
+                            <span class="lang-badge">Fácil</span>
+                        </div>
+                        <p>Famosa por sua sintaxe limpa e simples. É a linguagem padrão para Inteligência Artificial, Ciência de Dados e Automação.</p>
+                    </div>
+                    <div class="lang-tags">
+                        <span class="tag">Data Science</span>
+                        <span class="tag">IA</span>
+                        <span class="tag">Automação</span>
+                    </div>
+                </div>
+
+                <!-- HTML & CSS -->
+                <div class="lang-card" data-category="web">
+                    <div>
+                        <div class="lang-header">
+                            <h3>HTML & CSS</h3>
+                            <span class="lang-badge">Muito Fácil</span>
+                        </div>
+                        <p>A estrutura (HTML) e o estilo (CSS) da web. O ponto de partida fundamental para qualquer pessoa que deseja construir sites.</p>
+                    </div>
+                    <div class="lang-tags">
+                        <span class="tag">Estrutura</span>
+                        <span class="tag">Design Web</span>
+                        <span class="tag">Base</span>
+                    </div>
+                </div>
+
+                <!-- Kotlin / Swift -->
+                <div class="lang-card" data-category="mobile">
+                    <div>
+                        <div class="lang-header">
+                            <h3>Kotlin / Swift</h3>
+                            <span class="lang-badge">Intermediário</span>
+                        </div>
+                        <p>Linguagens modernas oficiais para desenvolvimento mobile nativo em Android (Kotlin) e ecossistema Apple (Swift).</p>
+                    </div>
+                    <div class="lang-tags">
+                        <span class="tag">iOS</span>
+                        <span class="tag">Android</span>
+                        <span class="tag">Mobile</span>
+                    </div>
+                </div>
+
+                <!-- SQL -->
+                <div class="lang-card" data-category="dados">
+                    <div>
+                        <div class="lang-header">
+                            <h3>SQL</h3>
+                            <span class="lang-badge">Iniciante</span>
+                        </div>
+                        <p>Linguagem essencial para consultar, manipular e gerenciar bancos de dados relacionais em praticamente qualquer sistema.</p>
+                    </div>
+                    <div class="lang-tags">
+                        <span class="tag">Banco de Dados</span>
+                        <span class="tag">Consultas</span>
+                    </div>
+                </div>
+
+                <!-- Java / C# -->
+                <div class="lang-card" data-category="web">
+                    <div>
+                        <div class="lang-header">
+                            <h3>Java / C#</h3>
+                            <span class="lang-badge">Intermediário</span>
+                        </div>
+                        <p>Linguagens robustas e amplamente utilizadas em grandes corporações, sistemas bancários e desenvolvimento de jogos.</p>
+                    </div>
+                    <div class="lang-tags">
+                        <span class="tag">Corporativo</span>
+                        <span class="tag">Games</span>
+                        <span class="tag">Back-end</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mini-Quiz Recomendador -->
+    <section id="quiz">
+        <div class="container">
+            <div class="quiz-container">
+                <h2>Qual linguagem escolher primeiro?</h2>
+                <p style="color: var(--text-muted); margin-top: 0.5rem;">Selecione qual é seu principal objetivo para receber uma sugestão:</p>
+                
+                <div class="quiz-options">
+                    <button class="quiz-opt" onclick="recommend('web')">🌐 Criar Sites e Apps Web</button>
+                    <button class="quiz-opt" onclick="recommend('dados')">📊 Analisar Dados ou IA</button>
+                    <button class="quiz-opt" onclick="recommend('mobile')">📱 Criar Aplicativos Celular</button>
+                    <button class="quiz-opt" onclick="recommend('games')">🎮 Desenvolver Jogos</button>
+                </div>
+
+                <div id="quiz-result" class="quiz-result">
+                    <h3 id="result-title" style="color: var(--accent); margin-bottom: 0.5rem;"></h3>
+                    <p id="result-desc" style="color: var(--text-light); font-size: 0.95rem;"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dicas para Iniciantes -->
+    <section id="dicas">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Dicas Essenciais para Iniciantes</h2>
+                <p class="section-desc">Um guia prático para evitar frustrações no início da jornada.</p>
+            </div>
+
+            <div class="steps-container">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Construa uma Base Sólida</h3>
+                        <p>Não pule a lógica de programação e algoritmos básicos. Entender como a lógica funciona facilitará o aprendizado de qualquer linguagem no futuro.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Pratique Todos os Dias (Código Mão na Massa)</h3>
+                        <p>Assistir tutoriais dá uma falsa sensação de aprendizado. Crie pequenos projetos pessoais, digite o código e resolva erros por conta própria.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Foque em Uma Tecnologia Por Vez</h3>
+                        <p>Evite a armadilha de tentar aprender várias linguagens ao mesmo tempo. Escolha uma, aprofunde-se e crie autonomia antes de migrar para outra.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Aprenda a Pesquisar e Ler Documentações</h3>
+                        <p>Erros fazem parte da rotina. Saber buscar soluções na internet e ler a documentação oficial é uma das habilidades mais valiosas de um programador.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; Guia de Programação. Conteúdo educativo focado no aprendizado e desenvolvimento humano.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Integrado -->
+    <script>
+        // Filtro de Linguagens
+        function filterLangs(category) {
+            const cards = document.querySelectorAll('.lang-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            cards.forEach(card => {
+                if (category === 'todas' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Quiz Recomendador
+        function recommend(goal) {
+            const resultBox = document.getElementById('quiz-result');
+            const resultTitle = document.getElementById('result-title');
+            const resultDesc = document.getElementById('result-desc');
+
+            const recommendations = {
+                'web': {
+                    title: 'Recomendação: HTML, CSS e JavaScript',
+                    desc: 'Comece com HTML e CSS para entender a estrutura dos sites e, em seguida, aprenda JavaScript para adicionar interatividade e dinamismo.'
+                },
+                'dados': {
+                    title: 'Recomendação: Python',
+                    desc: 'Python tem uma sintaxe muito clara e possui as bibliotecas mais poderosas para análise de dados, estatística e Inteligência Artificial.'
+                },
+                'mobile': {
+                    title: 'Recomendação: Flutter (Dart) ou React Native (JS)',
+                    desc: 'Para criar apps para Android e iOS simultaneamente, tecnologias como Flutter ou React Native são as mais eficientes no mercado hoje.'
+                },
+                'games': {
+                    title: 'Recomendação: C# (com Unity) ou C++',
+                    desc: 'C# junto com a engine Unity é a combinação perfeita e mais acessível para começar no desenvolvimento de jogos 2D e 3D.'
+                }
+            };
+
+            const rec = recommendations[goal];
+            if (rec) {
+                resultTitle.textContent = rec.title;
+                resultDesc.textContent = rec.desc;
+                resultBox.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
+<!-- zetta:639292433880691450 -->
